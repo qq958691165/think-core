@@ -18,7 +18,13 @@ class Date implements FormType, IAntdFormColumn
         $view = new View();
         $view->assign('form', $form_type);
         $view->assign('gid', Str::uuid());
-        $content = $view->fetch(__DIR__ . '/date.html');
+        
+        if($form_type['item_option']['read_only']){
+            $content = $view->fetch(__DIR__ . '/date_read_only.html');
+        }
+        else{
+            $content = $view->fetch(__DIR__ . '/date.html');
+        }
         return $content;
     }
 
