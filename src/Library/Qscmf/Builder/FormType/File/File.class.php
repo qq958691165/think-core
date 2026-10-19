@@ -23,7 +23,7 @@ class File extends FileFormType implements FormType, IAntdFormColumn
             $file = [];
             $file['url'] = U('/qscmf/resource/download', ['file_id' => $form_type['value']], '', true);
             if ($this->needPreview(showFileUrl($form_type['value']))) {
-                $file['preview_url'] = $this->genPreviewUrl(showFileUrl($form_type['value']));
+                $file['preview_url'] = $this->genPreviewUrl(HTTP_PROTOCOL . '://' . SITE_URL. showFileUrl($form_type['value']));
             }
             $view->assign('file', $file);
         }
